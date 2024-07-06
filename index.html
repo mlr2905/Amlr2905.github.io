@@ -99,17 +99,39 @@
             background-color: #8c7ae6;
             color: #fff;
         }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            opacity: 0;
+        }
+
+        .fade-in-up {
+            animation-name: fadeInUp;
+        }
     </style>
 </head>
 
 <body>
-    <header id="header">
+    <header id="header" class="animated fade-in-up">
         <h1><b>Lilac Utz</b></h1>
         <h3><b>QA Engineer</b> Manual & Automation</h3>
     </header>
     <main class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 animated fade-in-up">
                 <section>
                     <h2 class="section-title">CONTACT</h2>
                     <p>Modi'in</p>
@@ -161,7 +183,7 @@
                     <p>Swimming | Cooking | Biology</p>
                 </section>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 animated fade-in-up">
                 <section>
                     <h2 class="section-title">SUMMARY</h2>
                     <p>After managing and coaching teams for over 10 years by setting high standards of quality in every aspect, I realized that Quality Assurance is my real passion. In the past months, I've learned QA methodologies and acquired essential tools to achieve quality. I also have a strong affection for coding in Python.</p>
@@ -174,7 +196,7 @@
                     </p>
                     <p>
                         <center><a href="https://github.com/LilacUtz/POM-Automation-Project_Selenium" class="btn btn-custom">Automation Project (Selenium Python)</a></center><br>
-                        Create, prioritized, organized, and run automation script suites successfully in PyCharm using Playwright, Pytest, Selenium, and Appium, by using different locators in Dom Dev Tool to find elements in the HTML page and define test functions and run them. Overcome the difficulty of some hard-to-get elements such as pop-ups and active elements. Analyzed logs errors and failed tests, problem-solving dealing with Actual results versus Expected results. Execute API client-server requests utilizing Postman using Rest and Soap for comprehensive testing and validation as part of self-learning. Enroll in Python development courses on Udemy, practicing coding with VS Code, and uploading many GitHub repositories as studies progress.
+                        Created, prioritized, organized, and ran automation script suites successfully in PyCharm using Playwright, Pytest, Selenium, and Appium, by using different locators in DevTools to find elements on the HTML page and define test functions and run them. Overcame the difficulty of some hard-to-get elements such as pop-ups and active elements. Analyzed log errors and failed tests problem solving dealing with Actual results versus Expected results. Executed API client-server requests utilizing Postman using Rest and Soap for comprehensive testing and validation, as part of self-learning. Enrolled in Python development courses on Udemy, practicing coding with VS Code, and uploading many GitHub repositories as studies progress.
                     </p>
                     <p>
                         <center><a href="https://lilacutz.github.io/My-Resume-HTML/" class="btn btn-custom">My Resume HTML</a></center><br>
@@ -188,7 +210,7 @@
                         Established over 10 new branches and conducted training sessions for over 100 management teams and employees while overseeing the operational management of the store branch. Demonstrated a keen understanding of customer requirements and company standards. Achieved a consistent annual increase in branch revenue by 3% and conducted regular weekly reviews. Achieved many formal certifications as a leading manager.
                     </p>
                 </section>
-                <div class="top-link">
+                <div class="top-link animated fade-in-up">
                     <a href="#header">Back to Top</a>
                 </div>
             </div>
@@ -197,6 +219,22 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Add animation when scrolling down
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                $('.animated').each(function () {
+                    var imagePos = $(this).offset().top;
+                    var imageHeight = $(this).height();
+                    var topOfWindow = $(window).scrollTop();
+
+                    if (imagePos < topOfWindow + imageHeight && imagePos + imageHeight > topOfWindow) {
+                        $(this).addClass("fadeInUp");
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
