@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,33 +10,102 @@
     <style>
         body {
             background-color: hsl(264, 100%, 92%);
+            font-family: 'Arial', sans-serif;
         }
+
         #header {
             background-color: #1a3a5f;
             color: #fff;
             padding: 20px;
             text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .section-title {
             color: #1a3a5f;
             border-bottom: 2px solid #1a3a5f;
             padding-bottom: 5px;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
-        .contact-info i, .contact-info a {
+
+        .contact-info i,
+        .contact-info a {
             margin-right: 10px;
             color: #1a3a5f;
         }
+
         .fa-star {
             color: gold;
         }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        section p {
+            margin: 0 0 10px;
+        }
+
+        a {
+            color: #1a3a5f;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #0056b3;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2.section-title {
+            font-size: 1.5rem;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .top-link {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .top-link a {
+            color: #1a3a5f;
+        }
+
+        .top-link a:hover {
+            color: #0056b3;
+        }
+
+        .btn-custom {
+            background-color: #1a3a5f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
     </style>
 </head>
+
 <body>
     <header id="header">
         <h1><b>Lilac Utz</b></h1>
         <h3><b>QA Engineer</b> Manual & Automation</h3>
     </header>
-    <main class="container mt-5">
+    <main class="container">
         <div class="row">
             <div class="col-md-4">
                 <section>
@@ -97,15 +167,15 @@
                 <section>
                     <h2 class="section-title">PROJECTS</h2>
                     <p>
-                        <center><a href="https://www.linkedin.com/feed/update/urn:li:activity:7200380279583047680?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7200380279583047680%29&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B8wei8RDnSlS19x8rdY02WA%3D%3D">Manual Project</a></center><br>
+                        <center><a href="https://www.linkedin.com/feed/update/urn:li:activity:7200380279583047680?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7200380279583047680%29&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B8wei8RDnSlS19x8rdY02WA%3D%3D" class="btn btn-custom">Manual Project</a></center><br>
                         Conduct requirements analysis, establish test traceability with attention to detail by following SDLC, and draft test procedures STP, STD, STR. Executed Blackbox, Front-end manual integration and E2E tests for web and mobile, and performed manual Exploratory tests as part of the project and investigating production issues while documenting and managing bug reports using Jira and Xray. Successfully able to find and track bugs with high severity in the App and Web. Also executed Regression, Usability, and Compatibility tests on different environments and devices to ensure the core functionalities remain as required. The chosen App was a finance app, therefore it was necessary to conduct Penetration tests in addition to all the above.
                     </p>
                     <p>
-                        <center><a href="https://github.com/LilacUtz/POM-Automation-Project_Selenium">Automation Project (Selenium Python)</a></center><br>
+                        <center><a href="https://github.com/LilacUtz/POM-Automation-Project_Selenium" class="btn btn-custom">Automation Project (Selenium Python)</a></center><br>
                         Create, prioritized, organized, and run automation script suites successfully in PyCharm using Playwright, Pytest, Selenium, and Appium, by using different locators in Dom Dev Tool to find elements in the HTML page and define test functions and run them. Overcome the difficulty of some hard-to-get elements such as pop-ups and active elements. Analyzed logs errors and failed tests, problem-solving dealing with Actual results versus Expected results. Execute API client-server requests utilizing Postman using Rest and Soap for comprehensive testing and validation, as part of self-learning. Enrolled in Python development courses on Udemy, practicing coding with VS Code, and uploading many GitHub repositories as studies progress.
                     </p>
                     <p>
-                        <center><a href="https://lilacutz.github.io/My-Resume-html/">My-Resume-html</a></center><br>
+                        <center><a href="https://lilacutz.github.io/My-Resume-html/" class="btn btn-custom">My-Resume-html</a></center><br>
                         Developed HTML & CSS web pages during the course as practice to better understand this matter, including a personal resume page, which you can tap on the link above. Utilize SQL queries to extract data from databases and manipulation, enjoying writing queries very much. Configure and maintain environments, including VMware on Windows and basic Linux.
                     </p>
                 </section>
@@ -118,8 +188,10 @@
                         Achieved a consistent annual increase in branch revenue by 3% and conducted regular weekly reviews.<br>
                         Achieved many formal certifications as a leading manager.
                     </p>
-                    <a href="#Top">top</a>
                 </section>
+                <div class="top-link">
+                    <a href="#header">Back to Top</a>
+                </div>
             </div>
         </div>
     </main>
@@ -127,5 +199,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>
 
+</html>
