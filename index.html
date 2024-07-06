@@ -12,6 +12,7 @@
             background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
             color: #333;
             font-family: 'Arial', sans-serif;
+            position: relative; /* Add position relative to body */
         }
 
         #header {
@@ -68,6 +69,7 @@
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden; /* Hide overflow */
         }
 
         h2.section-title {
@@ -79,18 +81,26 @@
         }
 
         .top-link {
-            text-align: right;
-            margin-top: 20px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
             animation: fadeIn 1s forwards;
         }
 
         .top-link a {
-            color: #6c5ce7;
-            transition: color 0.3s ease;
+            display: inline-block;
+            background-color: #6c5ce7;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
         }
 
         .top-link a:hover {
-            color: #8c7ae6;
+            background-color: #8c7ae6;
+            transform: scale(1.05);
         }
 
         .btn-custom {
@@ -99,12 +109,12 @@
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .btn-custom:hover {
             background-color: #8c7ae6;
-            color: #fff;
+            transform: scale(1.05);
         }
 
         /* Animation */
@@ -129,17 +139,10 @@
                 opacity: 1;
             }
         }
-
-        /* Hover Animation */
-        .btn-custom:hover {
-            animation-name: fadeIn;
-            animation-duration: 0.5s;
-        }
     </style>
 </head>
 
 <body>
-    <a id="Top"></a>
     <header id="header">
         <h1><b>Lilac Utz</b></h1>
         <h3><b>QA Engineer</b> Manual & Automation</h3>
@@ -207,26 +210,20 @@
                     <h2 class="section-title">PROJECTS</h2>
                     <p>
                         <center><a href="https://www.linkedin.com/feed/update/urn:li:activity:7200380279583047680?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7200380279583047680%29&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B8wei8RDnSlS19x8rdY02WA%3D%3D" class="btn btn-custom">Manual Project</a></center><br>
-                        Conduct requirements analysis, establish test traceability with attention to detail by following SDLC, and draft test procedures STP, STD, STR. Executed Blackbox, Front-end manual integration and E2E tests for web and mobile and perform manual Exploratory tests as part of the project and investigating production issues while documenting and managing bug reports using Jira and Xray. Successfully able to find and track bugs with high severity in the App and Web. Also, execute Regression, Usability, and Compatibility tests on different environments and devices to make sure the core functionalities remain as required. The chosen App were a finance, therefore it was necessary to conduct Penetrating tests in addition to all the above.
-                    </p>
-                    <p>
+                        Conduct requirements analysis, establish test traceability with attention to detail by following SDLC, and draft test procedures STP, STD, STR. Executed Blackbox, Front-end manual integration and E2E tests for web and mobile and perform manual Exploratory tests as a part of the project and investigating production issues while documenting and managing bug reports using Jira and Xray. Successfully able to find and track bugs with high severity in the App and Web. Also execute Regression, Usability, and Compatibility tests on different environments and devices to make sure the core functionalities remain as required. The chosen App was a finance therefore it was necessary to conduct Penetrating tests in addition to all the above.<br><br>
                         <center><a href="https://github.com/LilacUtz/POM-Automation-Project_Selenium" class="btn btn-custom">Automation Project (Selenium Python)</a></center><br>
-                        Created, prioritized, organized, and ran automation script suites successfully in PyCharm using Playwright, Pytest, Selenium, and Appium, by using different locators in DevTools to find elements on the HTML page and define test functions and run them. Overcame the difficulty of some hard-to-get elements such as pop-ups and active elements. Analyzed log errors and failed tests problem solving dealing with Actual results versus Expected results. Executed API client-server requests utilizing Postman using Rest and Soap for comprehensive testing and validation, as part of self-learning. Enrolled in Python development courses on Udemy, practicing coding with VS Code, and uploading many GitHub repositories as studies progress.
-                    </p>
-                    <p>
+                        Created, prioritized, organized, and ran automation script suites successfully in PyCharm using Playwright, Pytest, Selenium, and Appium, by using different locators in DevTools to find elements on the HTML page and define test functions and run them. Overcame the difficulty of some hard-to-get elements such as pop-ups and active elements. Analyzed log errors and failed tests problem solving dealing with Actual results versus Expected results. Executed API client-server requests utilizing Postman using Rest and Soap for comprehensive testing and validation, as part of self-learning. Enrolled in Python development courses on Udemy, practicing coding with VS Code, and uploading many GitHub repositories as studies progress.<br><br>
                         <center><a href="https://lilacutz.github.io/My-Resume-HTML/" class="btn btn-custom">My Resume HTML</a></center><br>
                         Developed HTML & CSS web pages during the course as a practice, to better understand this matter, including a personal resume page, which you can tap on the link above. Utilized SQL queries to extract data from databases and manipulation, enjoying writing queries very much. Configure and maintain environments, including VMware on Windows and basic Linux.
                     </p>
                 </section>
                 <section>
                     <h2 class="section-title">WORK HISTORY</h2>
-                    <p>
-                        <b>Coaching-Manager</b>, FOXhome<br>
-                        Established over 10 new branches and conducted training sessions for over 100 management teams and employees while overseeing the operational management of the store branch. Demonstrated a keen understanding of customer requirements and company standards. Achieved a consistent annual increase in branch revenue by 3% and conducted regular weekly reviews. Achieved many formal certifications as a leading manager.
-                    </p>
+                    <p><b>Coaching-Manager</b>, FOXhome<br>
+                        Established over 10 new branches and conducted training sessions for over 100 management teams and employees while overseeing the operational management of the store branch. Demonstrated a keen understanding of customer requirements and company standards. Achieved a consistent annual increase in branch revenue by 3% and conducted regular weekly reviews. Achieved many formal certifications as a leading manager.</p>
                 </section>
                 <div class="top-link">
-                    <a href="#Top">Back to Top</a>
+                    <a href="#header">Back to Top</a>
                 </div>
             </div>
         </div>
