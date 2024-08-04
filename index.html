@@ -125,6 +125,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 10px;
         }
         .refresh-button:hover {
             background-color: #218838;
@@ -134,7 +135,7 @@
 <body>
     <div class="container">
         <h1>מספרים אקראיים</h1>
-        <select id="linesCount">
+         <select id="linesCount">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -191,8 +192,9 @@
 
         function refreshLine(button) {
             const line = button.closest('tr');
+            const newLineContent = generateLineContent();
             line.innerHTML = '';
-            line.appendChild(generateLineContent());
+            line.appendChild(newLineContent);
         }
 
         function generateLineContent() {
@@ -206,6 +208,7 @@
             const content = document.createDocumentFragment();
 
             const tdNumbers = document.createElement('td');
+            tdNumbers.colSpan = 3;
             const ul = document.createElement('ul');
             ul.className = 'number-list';
             numbersArray.forEach(number => {
