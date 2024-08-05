@@ -366,47 +366,43 @@
         }
 
         function updateCountdown() {
-            const now = new Date();
-            const currentDay = now.getDay();
+    const now = new Date();
+    const currentDay = now.getDay();
+    const currentHour = now.getHours();
+    const currentMinutes = now.getMinutes();
 
-            let nextDrawDate = new Date();
-            nextDrawDate.setHours(20, 0, 0, 0); // Set time to 20:00
+    let nextDrawDate = new Date();
+    nextDrawDate.setHours(23, 0, 0, 0); // Set time to 23:00
 
-            if (currentDay === 6) { // Saturday
-                nextDrawDate.setDate(now.getDate() + ((2 + 7 - currentDay) % 7)); // Next Tuesday
-            } else if (currentDay === 2 || currentDay === 4) { // Tuesday or Thursday
-                nextDrawDate.setDate(now.getDate() + ((6 + 7 - currentDay) % 7)); // Next Saturday
-            } else { // Any other day
-                nextDrawDate.setDate(now.getDate() + ((2 + 7 - currentDay) % 7)); // Next Tuesday
-                if (currentDay === 1 || currentDay === 3) { // Monday or Wednesday
-                    nextDrawDate.setDate(now.getDate() + ((4 + 7 - currentDay) % 7)); // Next Thursday
-                }
-            }
-
-            const drawDate = new Date(nextDrawDate);
-
-            const timeRemaining = drawDate - now;
-
-            if (timeRemaining < 0) {
-                document.getElementById('countdown').textContent = 'הגרלה לא מתוכננת בקרוב.';
-                return;
-            }
-
-            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-            document.getElementById('countdown').textContent = `הזמן הנותר עד ההגרלה הבאה: ${days} ימים, ${hours} שעות, ${minutes} דקות, ${seconds} שניות`;
+    if ((currentDay === 2 && currentHour < 23) || (currentDay === 4 && currentHour < 23) || (currentDay === 6 && currentHour < 23)) {
+        nextDrawDate.setDate(now.getDate());
+    } else {
+        if (currentDay === 2 && currentHour >= 23 || currentDay < 2) {
+            nextDrawDate.setDate(now.getDate() + ((2 + 7 - currentDay) % 7)); // Next Tuesday
+        } else if (currentDay === 4 && currentHour >= 23 || currentDay < 4) {
+            nextDrawDate.setDate(now.getDate() + ((4 + 7 - currentDay) % 7)); // Next Thursday
+        } else if (currentDay === 6 && currentHour >= 23 || currentDay < 6) {
+            nextDrawDate.setDate(now.getDate() + ((6 + 7 - currentDay) % 7)); // Next Saturday
         }
+    }
 
-        setInterval(updateCountdown, 1000);
-        window.onload = function() {
-            generateTables();
-            updateCountdown();
-        };
-        document.getElementById('linesCount').addEventListener('change', generateTables);
-    </script>
+    const timeRemaining = nextDrawDate - now;
+
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+    document.getElementById('countdown').textContent = `הזמן הנותר עד ההגרלה הבאה: ${days} ימים, ${hours} שעות, ${minutes} דקות, ${seconds} שניות`;
+}
+
+setInterval(updateCountdown, 1000);
+window.onload = function() {
+    generateTables();
+    updateCountdown();
+};
+document.getElementById('linesCount').addEventListener('change', generateTables);
+ </script>
 </body>
 </html>
 
