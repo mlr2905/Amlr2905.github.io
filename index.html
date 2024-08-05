@@ -131,14 +131,22 @@
         .refresh-button:hover {
             background-color: #218838;
         }
-
-        /* סגנונות עבור התצוגה */
-      
-        /* סגנונות עבור התצוגה */
-        .countdown {
-            font-size: 1.5em;
-            margin-top: 20px;
+       .countdown {
+           font-size: 2em;
+           margin-top: 20px;
+           color: #007bff;
+           background: #fff;
+           font-size: 20px;
+           padding: 10px;
+           border-radius: 10px;
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+           display: inline-block;
         }
+    
+       #countdown{
+           direction: rtl;
+        }
+
         .styled-button {
             background-color: #007bff;
             color: white;
@@ -180,7 +188,7 @@
             <option value="6">6</option>
             <option value="7">7</option>
         </select>
-        <span><b>:כמות קוביות</b></span>
+        <span><b>בחר/י כמות קוביות</b></span>
         <div class="tables" id="tablesContainer"></div>
         <div class="export-buttons">
             <button onclick="exportToPDF()">
@@ -372,17 +380,17 @@
     const currentMinutes = now.getMinutes();
 
     let nextDrawDate = new Date();
-    nextDrawDate.setHours(23, 0, 0, 0); // Set time to 23:00
+    nextDrawDate.setHours(23, 0, 0, 0); 
 
     if ((currentDay === 2 && currentHour < 23) || (currentDay === 4 && currentHour < 23) || (currentDay === 6 && currentHour < 23)) {
         nextDrawDate.setDate(now.getDate());
     } else {
         if (currentDay === 2 && currentHour >= 23 || currentDay < 2) {
-            nextDrawDate.setDate(now.getDate() + ((2 + 7 - currentDay) % 7)); // Next Tuesday
+            nextDrawDate.setDate(now.getDate() + ((2 + 7 - currentDay) % 7)); 
         } else if (currentDay === 4 && currentHour >= 23 || currentDay < 4) {
-            nextDrawDate.setDate(now.getDate() + ((4 + 7 - currentDay) % 7)); // Next Thursday
+            nextDrawDate.setDate(now.getDate() + ((4 + 7 - currentDay) % 7)); 
         } else if (currentDay === 6 && currentHour >= 23 || currentDay < 6) {
-            nextDrawDate.setDate(now.getDate() + ((6 + 7 - currentDay) % 7)); // Next Saturday
+            nextDrawDate.setDate(now.getDate() + ((6 + 7 - currentDay) % 7)); 
         }
     }
 
@@ -393,7 +401,7 @@
     const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-    document.getElementById('countdown').textContent = `הזמן הנותר עד ההגרלה הבאה: ${days} ימים, ${hours} שעות, ${minutes} דקות, ${seconds} שניות`;
+    document.getElementById('countdown').innerHTML = `<span style="color:black">הזמן הנותר עד ההגרלה הבאה</span>: <br/>${days} ימים, ${hours} שעות, ${minutes} דקות, ${seconds} שניות`;
 }
 
 setInterval(updateCountdown, 1000);
