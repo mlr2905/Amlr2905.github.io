@@ -365,44 +365,32 @@
             alert(message);
         }
 
-         function getNextTargetDate() {
+        function updateCountdown() {
             const now = new Date();
-            let target = new Date(now);
-            target.setHours(23, 0, 0, 0); // 11 PM
+            const currentDay = now.getDay();
 
-            switch (now.getDay()) {
-                case 2: // Tuesday
-                    if (now.getHours() >= 23) {
-                        target.setDate(target.getDate() + 2); // Move to Thursday
-                    }
-                    break;
-                case 4: // Thursday
-                    if (now.getHours() >= 23) {
-                        target.setDate(target.getDate() + 2); // Move to Saturday
-                    }
-                    break;
-                case 6: // Saturday
-                    if (now.getHours() >= 23) {
-                        target.setDate(target.getDate() + 3); // Move to Tuesday
-                    }
-                    break;
-                default:
-                    if (now.getDay() < 2) {
-                        target.setDate(target.getDate() + (2 - now.getDay())); // Move to Tuesday
-                    } else if (now.getDay() < 4) {
-                        target.setDate(target.getDate() + (4 - now.getDay())); // Move to Thursday
-                    } else if (now.getDay() < 6) {
-                        target.setDate(target.getDate() + (6 - now.getDay())); // Move to Saturday
-                    }
+            let nextDrawDate = new Date();
+            nextDrawDate.setHours(20, 0, 0, 0); // Set time to 20:00
+
+            if (currentDay === 6) { // Saturday
+                nextDrawDate.setDate(now.getDate() + ((2 + 7 - currentDay) % 7)); // Next Tuesday
+            } else if (currentDay === 2 || currentDay === 4) { // Tuesday or Thursday
+                nextDrawDate.setDate(now.getDate() + ((6 + 7 - currentDay) % 7)); // Next Saturday
+            } else { // Any other day
+                nextDrawDate.setDate(now.getDate() + ((2 + 7 - currentDay) % 7)); // Next Tuesday
+                if (currentDay === 1 || currentDay === 3) { // Monday or Wednesday
+                    nextDrawDate.setDate(now.getDate() + ((4 + 7 - currentDay) % 7)); // Next Thursday
+                }
             }
 
-            return target;
-        }
+            const drawDate = new Date(nextDrawDate);
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const target = getNextTargetDate().getTime();
-            const timeRemaining = target - now;
+            const timeRemaining = drawDate - now;
+
+            if (timeRemaining < 0) {
+                document.getElementById('countdown').textContent = 'הגרלה לא מתוכננת בקרוב.';
+                return;
+            }
 
             const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -413,6 +401,11 @@
         }
 
         setInterval(updateCountdown, 1000);
+        window.onload = function() {
+            generateTables();
+            updateCountdown();
+        };
+        document.getElementById('linesCount').addEventListener('change', generateTables);
     </script>
 </body>
 </html>
