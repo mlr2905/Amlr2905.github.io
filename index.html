@@ -382,13 +382,11 @@
     let nextDrawDate = new Date();
     nextDrawDate.setHours(23, 0, 0, 0); 
 
-    if ((currentDay === 2 && currentHour < 23) || (currentDay === 4 && currentHour < 23) || (currentDay === 6 && currentHour < 23)) {
+    if ((currentDay === 2 && currentHour < 23) || (currentDay === 6 && currentHour < 23)) {
         nextDrawDate.setDate(now.getDate());
     } else {
         if (currentDay === 2 && currentHour >= 23 || currentDay < 2) {
             nextDrawDate.setDate(now.getDate() + ((2 + 7 - currentDay) % 7)); 
-        } else if (currentDay === 4 && currentHour >= 23 || currentDay < 4) {
-            nextDrawDate.setDate(now.getDate() + ((4 + 7 - currentDay) % 7)); 
         } else if (currentDay === 6 && currentHour >= 23 || currentDay < 6) {
             nextDrawDate.setDate(now.getDate() + ((6 + 7 - currentDay) % 7)); 
         }
